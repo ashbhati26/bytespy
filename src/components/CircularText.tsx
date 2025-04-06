@@ -13,10 +13,10 @@ const getRotationTransition = (
   from: number,
   loop: boolean = true
 ) => ({
-  from: from,
+  from,
   to: from + 360,
   ease: "linear",
-  duration: duration,
+  duration,
   type: "tween",
   repeat: loop ? Infinity : 0,
 });
@@ -46,45 +46,34 @@ const CircularText: React.FC<CircularTextProps> = ({
       scale: 1,
       transition: getTransition(spinDuration, currentRotation),
     });
-  }, [spinDuration, controls, onHover, text]);
+  }, [spinDuration, controls, onHover, text, currentRotation]); // ✅ Fixed: added currentRotation
 
   const handleHoverStart = () => {
     if (!onHover) return;
+    let duration = spinDuration;
+    let scale = 1;
+
     switch (onHover) {
       case "slowDown":
-        controls.start({
-          rotate: currentRotation + 360,
-          scale: 1,
-          transition: getTransition(spinDuration * 2, currentRotation),
-        });
+        duration *= 2;
         break;
       case "speedUp":
-        controls.start({
-          rotate: currentRotation + 360,
-          scale: 1,
-          transition: getTransition(spinDuration / 4, currentRotation),
-        });
+        duration /= 4;
         break;
       case "pause":
-        controls.start({
-          rotate: currentRotation,
-          scale: 1,
-          transition: {
-            rotate: { type: "spring", damping: 20, stiffness: 300 },
-            scale: { type: "spring", damping: 20, stiffness: 300 },
-          },
-        });
-        break;
+        controls.stop();
+        return;
       case "goBonkers":
-        controls.start({
-          rotate: currentRotation + 360,
-          scale: 0.8,
-          transition: getTransition(spinDuration / 20, currentRotation),
-        });
-        break;
-      default:
+        duration /= 20;
+        scale = 0.8;
         break;
     }
+
+    controls.start({
+      rotate: currentRotation + 360,
+      scale,
+      transition: getTransition(duration, currentRotation),
+    });
   };
 
   const handleHoverEnd = () => {
@@ -100,7 +89,11 @@ const CircularText: React.FC<CircularTextProps> = ({
       initial={{ rotate: 0 }}
       className={`mx-auto rounded-full w-[200px] h-[200px] text-[#ede1d1] font-black text-center cursor-pointer origin-center ${className}`}
       animate={controls}
-      onUpdate={(latest) => setCurrentRotation(Number(latest.rotate))}
+      onUpdate={(latest) => {
+        if (latest.rotate !== undefined) {
+          setCurrentRotation(Number(latest.rotate));
+        }
+      }}
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
     >
