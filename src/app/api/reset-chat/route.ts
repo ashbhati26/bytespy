@@ -12,8 +12,8 @@ export async function POST() {
     }
 
     return NextResponse.json({ message: "All chat history reset successfully" });
-  } catch (error) {
-    console.error("Error resetting chat history:", error);
+  } catch (err) {
+    console.error("Error resetting chat history:", err);
     return NextResponse.json({ error: "Failed to reset chat history" }, { status: 500 });
   }
 }
