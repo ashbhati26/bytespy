@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect } from 'react';
-import Hero from '@/components/Hero';
-import Footer from '@/components/Footer';
-import Lenis from '@studio-freight/lenis';
+import React, { useEffect } from "react";
+import Hero from "@/components/Hero";
+import Footer from "@/components/Footer";
+import Lenis from "@studio-freight/lenis";
 
 const Page = () => {
   useEffect(() => {

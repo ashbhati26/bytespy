@@ -26,7 +26,9 @@ const CopyURL: React.FC = () => {
           <FiCopy size={20} />
         </button>
       </div>
-      {copied && <p className="text-green-500 text-sm mt-2">Copied to clipboard!</p>}
+      {copied && (
+        <p className="text-green-500 text-sm mt-2">Copied to clipboard!</p>
+      )}
     </div>
   );
 };

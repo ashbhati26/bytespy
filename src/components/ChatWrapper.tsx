@@ -14,7 +14,14 @@ export const ChatWrapper = ({
   sessionId: string;
   initialMessages: Message[];
 }) => {
-  const { messages, handleInputChange, handleSubmit, input, setInput, setMessages } = useChat({
+  const {
+    messages,
+    handleInputChange,
+    handleSubmit,
+    input,
+    setInput,
+    setMessages,
+  } = useChat({
     api: "/api/chat-stream",
     body: { sessionId },
     initialMessages,
@@ -36,7 +43,9 @@ export const ChatWrapper = ({
       if (navigator.sendBeacon) {
         navigator.sendBeacon(
           "/api/cleanup",
-          new Blob([JSON.stringify({ sessionId })], { type: "application/json" })
+          new Blob([JSON.stringify({ sessionId })], {
+            type: "application/json",
+          })
         );
       }
     };

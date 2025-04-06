@@ -27,7 +27,10 @@ const Button: FC<ButtonProps> = ({
   };
 
   return (
-    <div ref={scope} className="flex justify-center items-center font-[Playfair]">
+    <div
+      ref={scope}
+      className="flex justify-center items-center font-[Playfair]"
+    >
       <button
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}

@@ -44,9 +44,7 @@ const Navbar = ({ onResetChat }: { onResetChat: () => void }) => {
   }, [lastScrollY]);
 
   return (
-    <div
-      className="fixed inset-x-0 bg-[#0c3c26] drop-shadow-xl rounded-lg my-4 mx-[6vw] md:mx-[16vw] z-50"
-    >
+    <div className="fixed inset-x-0 bg-[#0c3c26] drop-shadow-xl rounded-lg my-4 mx-[6vw] md:mx-[16vw] z-50">
       <header className="w-full">
         <nav className="flex items-center justify-between px-6 md:py-3 py-2">
           <Link href="/">Logo</Link>
