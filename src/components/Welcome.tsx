@@ -17,17 +17,17 @@ const Welcome = () => {
         <div className="flex flex-col items-center gap-2 text-center">
           <div className="flex flex-col sm:flex-row items-center gap-4 font-winky">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-barlow-condensed uppercase md:tracking-[-6px] scale-y-[1.1] font-semibold">
-              Hello! I'm Pi,
+              {`Hello! I'm Pi,`}
             </h1>
             <span className="text-4xl sm:text-5xl md:text-6xl font-dancing">
               and
             </span>
           </div>
           <h2 className="text-base sm:text-lg md:text-xl font-barlow-condensed uppercase tracking-[-1px] scale-y-[1.1]">
-            I'm here to provide you with instant support.
+            {`I'm here to provide you with instant support.`}
           </h2>
           <h2 className="text-base sm:text-lg md:text-xl font-barlow-condensed uppercase tracking-[-1px] scale-y-[1.1]">
-            What can I help you discover?
+            {`What can I help you discover?`}
           </h2>
         </div>
       </motion.div>

@@ -89,7 +89,7 @@ export const ChatInput = ({
       </div>
 
       <div className="flex justify-center text-center text-xs md:text-sm text-[#0c3c26] mt-2">
-        <h2>AI may make mistakes, please don't rely on its information.</h2>
+        <h2>{`AI may make mistakes, please don't rely on its information.`}</h2>
       </div>
     </motion.div>
   );

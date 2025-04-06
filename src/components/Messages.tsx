@@ -35,7 +35,7 @@ const Messages = ({ messages }: MessagesProps) => {
             transition={{ duration: 0.5, ease: "easeInOut" }}
             className="text-center text-xl font-semibold text-[#0c3c26]"
           >
-            Welcome! Ask me anything ✨
+            {`Welcome! Ask me anything ✨`}
           </motion.div>
         )}
 
