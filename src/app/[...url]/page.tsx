@@ -5,25 +5,21 @@ import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
-interface PageProps {
-  params: {
-    url?: string[];
-  };
-}
-
 // Helper to decode and join the URL segments
 function reconstructUrl(url: string[]): string {
   return url.map(decodeURIComponent).join("/");
 }
 
-const Page = async ({ params }: PageProps) => {
+const Page = async ({
+  params,
+}: {
+  params: { url?: string[] };
+}) => {
   const cookieStore = cookies();
   const sessionCookie = (await cookieStore).get("sessionId")?.value || "";
-  
+
   const urlArray = params.url ?? [];
   const reconstructedUrl = reconstructUrl(urlArray);
-
-  // Clean session ID for use in Redis and context
   const sessionId = `${reconstructedUrl}--${sessionCookie}`.replace(/\//g, "");
 
   console.log("🧠 Reconstructed URL:", reconstructedUrl);
