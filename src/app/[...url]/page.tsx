@@ -12,13 +12,13 @@ interface PageProps {
 }
 
 function reconstructUrl(url: string[]) {
-  const decodedComponents = url.map((component) => decodeURIComponent(component));
-  return decodedComponents.join("/");
+  return url.map(decodeURIComponent).join("/");
 }
 
 const Page = async ({ params }: PageProps) => {
-  const sessionCookie = (await cookies()).get("sessionId")?.value ?? "";
-  const urlArray = params?.url ?? [];
+  const cookieStore = cookies();
+  const sessionCookie = (await cookieStore).get("sessionId")?.value ?? "";
+  const urlArray = params.url ?? [];
   const reconstructedUrl = reconstructUrl(urlArray);
   const sessionId = (reconstructedUrl + "--" + sessionCookie).replace(/\//g, "");
 
