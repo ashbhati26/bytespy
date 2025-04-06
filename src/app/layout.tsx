@@ -5,11 +5,9 @@ import { Providers } from "@/components/Providers";
 
 // Import fonts via next/font/google
 import { Playfair_Display } from "next/font/google";
-import { Dancing_Script } from "next/font/google";
 
 // Setup fonts with proper fallback
 const playfair = Playfair_Display({ subsets: ["latin"], display: "swap" });
-const dancingScript = Dancing_Script({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
