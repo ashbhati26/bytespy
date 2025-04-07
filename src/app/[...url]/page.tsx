@@ -6,7 +6,6 @@ import { ragChat } from "@/lib/rag-chat";
 import { redis } from "@/lib/redis";
 import { cookies } from "next/headers";
 
-
 export const dynamic = "force-dynamic";
 
 // Helper to decode and join the URL segments
@@ -15,8 +14,8 @@ function reconstructUrl(url: string[]): string {
 }
 
 const Page = async ({ params }: PageProps) => {
-  const cookieStore = cookies();
-  const sessionCookie = (await cookieStore).get("sessionId")?.value || "";
+  const cookieStore = cookies(); // ✅ No await here
+  const sessionCookie = cookieStore.get("sessionId")?.value || "";
 
   const urlArray = params.url ?? [];
   const reconstructedUrl = reconstructUrl(urlArray);
