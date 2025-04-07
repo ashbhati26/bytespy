@@ -1,7 +1,11 @@
+// src/app/[...url]/page.tsx
+
 import { ChatWrapper } from "@/components/ChatWrapper";
+import { PageProps } from "@/lib/page.props";
 import { ragChat } from "@/lib/rag-chat";
 import { redis } from "@/lib/redis";
 import { cookies } from "next/headers";
+
 
 export const dynamic = "force-dynamic";
 
@@ -10,15 +14,7 @@ function reconstructUrl(url: string[]): string {
   return url.map(decodeURIComponent).join("/");
 }
 
-interface PageParams {
-  url?: string[];
-}
-
-const Page = async ({
-  params,
-}: {
-  params: PageParams;
-}) => {
+const Page = async ({ params }: PageProps) => {
   const cookieStore = cookies();
   const sessionCookie = (await cookieStore).get("sessionId")?.value || "";
 
