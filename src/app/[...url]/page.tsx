@@ -1,4 +1,3 @@
-'use client'
 
 import { ChatWrapper } from "@/components/ChatWrapper";
 import { ragChat } from "@/lib/rag-chat";
